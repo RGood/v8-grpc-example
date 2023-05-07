@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package clock;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/RGood/v8-rpc/internal/generated/clock";
+
+message TimeRequest {}
+
+message TimeResponse {
+    string id = 1;
+    google.protobuf.Timestamp time = 2;
+}
+
+service Clock {
+    rpc Now(TimeRequest) returns(TimeResponse);
+}
