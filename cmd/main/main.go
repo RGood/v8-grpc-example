@@ -24,6 +24,10 @@ func main() {
 		//   b. Or set up a grpc service to the clock on a separate process and hit it over some legitimate RPC
 		// 2. The Description has a Handler that only knows how to talk to a service implementation,
 		//    so we'd have to wrap the client in some proxy service (blah)
+		// 3. Service Descriptions cannot be sent over the wire and need to be locally known, so we can't
+		//    easily make a service that's completely agnostic about the request unless we completely bypass
+		//    conventional request handling and just pass around the raw request bodies and decode them inside
+		//    the JS
 		Client: plugins.NewClock(),
 	}
 
